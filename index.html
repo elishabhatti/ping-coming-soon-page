@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <title>Frontend Mentor | Ping coming soon page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      transition: all 0.35s;
+      font-family: 'Libre Franklin';
+      box-sizing: border-box;
+    }
+    body {
+      padding: 1.5rem;
+    }
+    .row-1  {
+      margin: 25px 20px;
+    }
+    .row-2 {
+      margin: 10px 20px;
+    }
+    .black {
+      color: black;
+      font-weight: 500;
+    }
+    h1 {
+      color: hsl(0, 0%, 59%);
+      font-weight: 300;
+      font-size: 40px;
+    }
+    p {
+      margin: 5px 20px;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+    }
+    .row-5 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .gray {
+      color: gray;
+    }
+    .illustration-img {
+      width: 40%;
+    }
+    #email {
+      width: 400px;
+      margin: 10px;
+      color: gray;
+      padding: 15px;
+      border-radius: 50px;
+      border: 1px solid hsl(0, 0%, 59%);
+      outline: none;
+    }
+    #btn {
+      width: 150px;
+      padding: 15px;
+      border-radius: 50px;
+      color: white;
+      background-color: hsl(223, 87%, 63%);
+      border: none;
+      outline: none;
+      cursor: pointer;
+      box-shadow: 2px 3px 2px 3px hsl(223, 100%, 88%);
+    }
+    #btn:hover {
+      background-color: hsl(223, 100%, 82%);
+
+    }
+    .form {
+      margin: 10px 20px;
+    }
+    .icon {
+      font-size: 20px;
+      margin: 5px 15px;
+      color: hsl(223, 87%, 63%);
+      cursor: pointer;
+      border-radius: 50%;
+      padding: 10px;
+    }
+    .icon:hover {
+      background-color: hsl(223, 87%, 63%);
+      color: white;
+
+    }
+    @media (max-width:950px) {
+      .container {
+        text-align: center;
+        padding: 1rem;
+      }
+      .form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
+      #btn, #email {
+        margin: 5px 20px;
+        width: 100%;
+      }
+      .illustration-img {
+        width: 100%;
+        margin: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row-1">
+      <img src="./images/logo.svg" alt="">
+    </div>
+    <div class="row-2">
+      <h1 class="heading">We are launching <span class="black">soon!</span></b></h1>
+      <p>Subscribe and get notified</p>
+    </div>
+    <div class="form">
+        <input type="email" id="email" placeholder="Enter your email address..." />
+        <button id="btn" onclick="validateEmail()">Notify Me</button>
+        <p id="error"></p>
+    </div>
+    <div class="row-4">
+      <img class="illustration-img" src="./images/illustration-dashboard.png" alt="">
+    </div>
+    <div class="row-5">
+      <ion-icon class="icon" name="logo-facebook"></ion-icon>
+      <ion-icon class="icon" name="logo-twitter"></ion-icon>
+      <ion-icon class="icon" name="logo-instagram"></ion-icon>
+    </div>
+    <div class="row-6">
+      <p class="gray">&copy; Copyright Ping. All rights reserved. </p>
+    </div>
+  </div>
+  <script>
+     
+      function validateEmail() {
+      const email = document.getElementById("email").value;
+      const input = document.querySelector("input");
+      const error = document.getElementById("error");
+      const regexPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (email === "") {
+        error.textContent = "Fill the Field First";
+        error.style.color = "red";
+      } else if (!regexPattern.test(email)) {
+        error.textContent = "Please provide a valid email" 
+        error.style.color = "red";
+      } else {
+        error.style.color = "green";
+        error.textContent = "Thank you for Subscribing, you get notified";
+      }
+    }
+
+    email.addEventListener("input", () => {
+        error.textContent = "";
+      });
+      email.addEventListener("keypress", (e) => {
+        if(e.key === "Enter") {
+          validateEmail()
+        }
+      })
+  </script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
